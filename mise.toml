@@ -1,0 +1,5 @@
+[tools]
+node = 'latest'
+ruby = 'latest'
+rust = { version = "latest", components = "rust-src,llvm-tools" }
+java = 'openjdk-20.0.2'

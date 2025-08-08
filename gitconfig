@@ -1,0 +1,8 @@
+[user]
+	signingkey = C26F1CB91B10E069
+	email = yo@axross.dev
+	name = Kohei Asai
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
