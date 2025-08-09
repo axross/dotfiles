@@ -27,5 +27,6 @@ cask "slack"
 cask "steermouse"
 cask "zed"
 
+mas "Canary Mail App", id: 1236045954
 mas "MeetingBar", id: 1532419400
 mas "Xcode", id: 497799835
