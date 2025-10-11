@@ -10,6 +10,7 @@ cask "1password"
 cask "alt-tab"
 cask "android-studio"
 cask "cleanshot"
+cask "cursor"
 cask "discord"
 cask "figma"
 cask "font-jetbrains-mono"
@@ -25,7 +26,6 @@ cask "proxyman"
 cask "raycast"
 cask "slack"
 cask "steermouse"
-cask "zed"
 
 mas "Canary Mail App", id: 1236045954
 mas "MeetingBar", id: 1532419400

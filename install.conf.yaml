@@ -25,21 +25,21 @@
       command: mise trust
     - description: Install programming languages with mise
       command: mise install
-    - description: Set ANDROID_HOME
-      command: set -Ux ANDROID_HOME $(brew --prefix)/share/android-commandlinetools
-    - description: Install Android SDK emulator
-      command: yes | sdkmanager --install "emulator"
-    - description: Add ANDROID_HOME/emulator to PATH
-      command: echo $PATH | grep -q -v "$ANDROID_HOME/emulator" && fish_add_path $ANDROID_HOME/emulator || echo ''
-    - description: Install Android SDK platform-tools
-      command: yes | sdkmanager --install "platform-tools"
-    - description: Add ANDROID_HOME/platform-tools to PATH
-      command: echo $PATH | grep -q -v "$ANDROID_HOME/platform-tools" && fish_add_path $ANDROID_HOME/platform-tools || echo ''
-    - description: Install Android 36 system image (arm64)
-      command: yes | sdkmanager --install "system-images;android-36;google_apis_playstore;arm64-v8a"
-    - description: Add android virtual device "pixel_9"
-      command: avdmanager list avd --compact | grep -q -v 'pixel_9' && avdmanager -s create avd -n pixel_9 -k "system-images;android-36;google_apis_playstore;arm64-v8a" || echo ''
-    - description: Install XCode
-      command: xcode-select --install
-    - description: Install cocoapods
-      command: gem install cocoapods
+    # - description: Set ANDROID_HOME
+    #   command: set -Ux ANDROID_HOME $(brew --prefix)/share/android-commandlinetools
+    # - description: Install Android SDK emulator
+    #   command: yes | sdkmanager --install "emulator"
+    # - description: Add ANDROID_HOME/emulator to PATH
+    #   command: echo $PATH | grep -q -v "$ANDROID_HOME/emulator" && fish_add_path $ANDROID_HOME/emulator || echo ''
+    # - description: Install Android SDK platform-tools
+    #   command: yes | sdkmanager --install "platform-tools"
+    # - description: Add ANDROID_HOME/platform-tools to PATH
+    #   command: echo $PATH | grep -q -v "$ANDROID_HOME/platform-tools" && fish_add_path $ANDROID_HOME/platform-tools || echo ''
+    # - description: Install Android 36 system image (arm64)
+    #   command: yes | sdkmanager --install "system-images;android-36;google_apis_playstore;arm64-v8a"
+    # - description: Add android virtual device "pixel_9"
+    #   command: avdmanager list avd --compact | grep -q -v 'pixel_9' && avdmanager -s create avd -n pixel_9 -k "system-images;android-36;google_apis_playstore;arm64-v8a" || echo ''
+    # - description: Install XCode
+    #   command: xcode-select --install
+    # - description: Install cocoapods
+    #   command: gem install cocoapods
