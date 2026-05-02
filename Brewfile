@@ -10,15 +10,14 @@ cask "1password"
 cask "alt-tab"
 cask "android-studio"
 cask "cleanshot"
-cask "cursor"
 cask "discord"
 cask "figma"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
+cask "font-symbols-only-nerd-font"
 cask "google-chrome"
 cask "gpg-suite"
 cask "karabiner-elements"
-cask "ngrok"
 cask "nordvpn"
 cask "notion"
 cask "ogdesign-eagle"
@@ -27,6 +26,5 @@ cask "raycast"
 cask "slack"
 cask "steermouse"
 
-mas "Canary Mail App", id: 1236045954
 mas "MeetingBar", id: 1532419400
 mas "Xcode", id: 497799835

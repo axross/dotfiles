@@ -7,15 +7,52 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "theme": {
-    "mode": "system",
-    "light": "Tokyo Night Light",
-    "dark": "Tokyo Night"
+  "agent_servers": {
+    "github-copilot-cli": {
+      "favorite_config_option_values": {
+        "model": ["claude-sonnet-4.6"],
+      },
+      "type": "registry",
+    },
+    "claude-acp": {
+      "favorite_config_option_values": {
+        "model": [
+          "sonnet"
+        ]
+      },
+      "type": "registry",
+    },
   },
-  "icon_theme": "Catppuccin Latte",
+  "agent": {
+    "default_model": {
+      "effort": "high",
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.6",
+      "enable_thinking": true,
+    },
+    "favorite_models": [
+      {
+        "provider": "copilot_chat",
+        "model": "claude-sonnet-4.6",
+        "enable_thinking": true,
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-haiku-4.5",
+        "enable_thinking": true,
+      },
+      {
+        "provider": "google",
+        "model": "gemini-3.1-pro-preview",
+        "enable_thinking": true,
+      },
+    ],
+    "model_parameters": [],
+  },
+  "allow_rewrap": "in_comments",
+  "auto_signature_help": true,
   "buffer_font_family": "JetBrains Mono",
   "buffer_font_size": 14,
-  "buffer_font_weight": 300,
   "buffer_font_features": {
     "cv02": true,
     "cv04": true,
@@ -27,11 +64,115 @@
     "cv16": true,
     "cv17": true,
     "cv18": true,
-    "cv19": true
+    "cv19": true,
   },
-  "ui_font_family": "JetBrains Mono",
+  "collaboration_panel": {
+    "dock": "right",
+  },
+  "confirm_quit": true,
+  "debugger": {
+    "button": false,
+  },
+  "edit_predictions": {
+    "mode": "eager",
+    "provider": "zed",
+  },
+  "git_panel": {
+    "dock": "right",
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Latte",
+  },
+  "indent_guides": {
+    "coloring": "indent_aware",
+    "background_coloring": "indent_aware",
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "edit_debounce_ms": 300,
+    "show_type_hints": false,
+  },
+  "languages": {
+    "JSON": {
+      "format_on_save": "on",
+    },
+    "CSS": {
+      "format_on_save": "on",
+    },
+    "TypeScript": {
+      "format_on_save": "on",
+    },
+    "TSX": {
+      "format_on_save": "on",
+    },
+  },
+  "lsp": {
+    "biome": {
+      "settings": {
+        "config_path": "<path>/biome.json",
+        "require_config_file": true,
+      },
+    },
+  },
+  "outline_panel": {
+    "indent_guides": {
+      "show": "never",
+    },
+  },
+  "project_panel": {
+    "bold_folder_labels": true,
+    "indent_guides": {
+      "show": "never",
+    },
+  },
+  "scrollbar": {
+    "git_diff": false,
+  },
+  "search": {
+    "case_sensitive": true,
+    "regex": true,
+  },
+  "search_wrap": false,
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+    "show_close_button": "hidden",
+  },
+  "tab_size": 2,
+  "terminal": {
+    "font_family": "JetBrains Mono",
+    "font_fallbacks": ["Symbols Nerd Font Mono"],
+    "font_size": 14,
+    "line_height": "comfortable",
+    "font_features": {
+      "cv02": true,
+      "cv04": true,
+      "cv05": true,
+      "cv06": true,
+      "cv07": true,
+      "cv11": true,
+      "cv14": true,
+      "cv16": true,
+      "cv17": true,
+      "cv18": true,
+      "cv19": true,
+    },
+    "env": {
+      "PATH": "",
+    },
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "Tokyo Night Light",
+    "dark": "Tokyo Night",
+  },
+  "title_bar": {
+    "show_branch_icon": true,
+  },
+  "ui_font_family": "IBM Plex Sans",
   "ui_font_size": 14,
-  "ui_font_weight": 300,
   "ui_font_features": {
     "cv02": true,
     "cv04": true,
@@ -43,35 +184,7 @@
     "cv16": true,
     "cv17": true,
     "cv18": true,
-    "cv19": true
+    "cv19": true,
   },
-  "tabs": {
-    "file_icons": true,
-    "git_status": true,
-    "show_close_button": "hidden"
-  },
-  "terminal": {
-    "env": {
-      "PATH": ""
-    }
-  },
-  "agent": {
-    "model_parameters": [],
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-latest"
-    }
-  },
-  "lsp": {
-    "biome": {
-      "settings": {
-        "require_config_file": true
-      }
-    }
-  },
-  "format_on_save": "on",
-  "code_actions_on_format": {
-    "source.fixAll.biome": true,
-    "source.organizeImports.biome": true
-  }
+  "wrap_guides": [80, 120],
 }
