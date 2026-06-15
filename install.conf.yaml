@@ -4,13 +4,11 @@
         relink: true
 - create:
     - ~/.config
-    - ~/.config/fish
     - ~/.config/karabiner
     - ~/.config/zed
     - ~/.ssh
     - ~/Repositories
 - link:
-    ~/.config/fish/config.fish: config/fish/config.fish
     ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
     ~/.config/zed/settings.json: config/zed/settings.json
     ~/.ssh/config: ssh/config
