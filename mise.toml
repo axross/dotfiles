@@ -1,7 +1,20 @@
 [tools]
-jq = 'latest'
-gh = 'latest'
-node = 'latest'
-ruby = 'latest'
-rust = { version = "latest", components = "rust-src,llvm-tools" }
-java = 'openjdk-20.0.2'
+
+[[tools.gh]]
+version = "latest"
+
+[[tools.java]]
+version = "openjdk-20.0.2"
+
+[[tools.jq]]
+version = "latest"
+
+[[tools.node]]
+version = "latest"
+
+[[tools.ruby]]
+version = "latest"
+
+[[tools.rust]]
+version = "latest"
+components = "rust-src,llvm-tools"

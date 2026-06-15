@@ -3,12 +3,17 @@ brew "git"
 brew "lazygit"
 brew "mas"
 brew "mise"
+brew "starship"
 brew "trash"
 brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-history-substring-search"
 brew "zsh-syntax-highlighting"
+
+# for mise + ruby workaround
+# see: https://github.com/jdx/mise/discussions/7084
+brew "libyaml"
 
 cask "1password"
 cask "android-studio"
