@@ -10,3 +10,5 @@
 	rebase = true
 [init]
 	defaultBranch = main
+[core]
+	excludesfile = /Users/axross/.gitignore_global
