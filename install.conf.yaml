@@ -18,6 +18,8 @@
     ~/.gitignore_global: gitignore_global
     ~/Brewfile: Brewfile
     ~/mise.toml: mise.toml
+    ~/.zshrc: zshrc
+    ~/.zshenv: zshenv
 # - shell:
 #     - description: Brew Bundle
 #       command: brew bundle

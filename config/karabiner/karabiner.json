@@ -12,129 +12,72 @@
                             {
                                 "from": {
                                     "key_code": "left_command",
-                                    "modifiers": { "optional": ["any"] }
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
                                 },
-                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 100
+                                },
                                 "to": [
                                     {
                                         "key_code": "left_command",
                                         "lazy": true
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "japanese_eisuu" }],
-                                "to_if_held_down": [{ "key_code": "left_command" }],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "japanese_eisuu"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "left_command"
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "right_command",
-                                    "modifiers": { "optional": ["any"] }
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
                                 },
-                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 100
+                                },
                                 "to": [
                                     {
                                         "key_code": "right_command",
                                         "lazy": true
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "japanese_kana" }],
-                                "to_if_held_down": [{ "key_code": "right_command" }],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "japanese_kana"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "right_command"
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
                     }
                 ]
             },
-            "devices": [
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 834,
-                        "vendor_id": 1452
-                    },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "key_code": "grave_accent_and_tilde" }]
-                        },
-                        {
-                            "from": { "key_code": "d" },
-                            "to": [{ "key_code": "s" }]
-                        },
-                        {
-                            "from": { "key_code": "e" },
-                            "to": [{ "key_code": "f" }]
-                        },
-                        {
-                            "from": { "key_code": "f" },
-                            "to": [{ "key_code": "t" }]
-                        },
-                        {
-                            "from": { "key_code": "g" },
-                            "to": [{ "key_code": "d" }]
-                        },
-                        {
-                            "from": { "key_code": "h" },
-                            "to": [{ "key_code": "h" }]
-                        },
-                        {
-                            "from": { "key_code": "i" },
-                            "to": [{ "key_code": "u" }]
-                        },
-                        {
-                            "from": { "key_code": "j" },
-                            "to": [{ "key_code": "n" }]
-                        },
-                        {
-                            "from": { "key_code": "k" },
-                            "to": [{ "key_code": "e" }]
-                        },
-                        {
-                            "from": { "key_code": "l" },
-                            "to": [{ "key_code": "i" }]
-                        },
-                        {
-                            "from": { "key_code": "n" },
-                            "to": [{ "key_code": "k" }]
-                        },
-                        {
-                            "from": { "key_code": "o" },
-                            "to": [{ "key_code": "y" }]
-                        },
-                        {
-                            "from": { "key_code": "p" },
-                            "to": [{ "key_code": "semicolon" }]
-                        },
-                        {
-                            "from": { "key_code": "r" },
-                            "to": [{ "key_code": "p" }]
-                        },
-                        {
-                            "from": { "key_code": "s" },
-                            "to": [{ "key_code": "r" }]
-                        },
-                        {
-                            "from": { "key_code": "semicolon" },
-                            "to": [{ "key_code": "o" }]
-                        },
-                        {
-                            "from": { "key_code": "t" },
-                            "to": [{ "key_code": "g" }]
-                        },
-                        {
-                            "from": { "key_code": "u" },
-                            "to": [{ "key_code": "l" }]
-                        },
-                        {
-                            "from": { "key_code": "y" },
-                            "to": [{ "key_code": "j" }]
-                        }
-                    ]
-                }
-            ],
             "name": "Default profile",
             "selected": true,
-            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+            "virtual_hid_keyboard": {
+                "keyboard_type_v2": "ansi"
+            }
         }
     ]
 }

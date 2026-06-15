@@ -24,6 +24,7 @@
     },
   },
   "agent": {
+    "dock": "left",
     "default_model": {
       "effort": "high",
       "provider": "copilot_chat",
@@ -117,11 +118,13 @@
     },
   },
   "outline_panel": {
+    "dock": "right",
     "indent_guides": {
       "show": "never",
     },
   },
   "project_panel": {
+    "dock": "right",
     "bold_folder_labels": true,
     "indent_guides": {
       "show": "never",
