@@ -5,12 +5,10 @@
 - create:
     - ~/.config
     - ~/.config/karabiner
-    - ~/.config/zed
     - ~/.ssh
     - ~/Repositories
 - link:
     ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
-    ~/.config/zed/settings.json: config/zed/settings.json
     ~/.ssh/config: ssh/config
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
