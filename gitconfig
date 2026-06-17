@@ -12,3 +12,5 @@
 	defaultBranch = main
 [core]
 	excludesfile = /Users/axross/.gitignore_global
+[push]
+	autoSetupRemote = true
