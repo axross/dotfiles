@@ -1,16 +1,23 @@
-[user]
-	signingkey = C26F1CB91B10E069
-	email = yo@axross.dev
-	name = Kohei Asai
-[commit]
-	gpgsign = true
-[tag]
-	gpgSign = true
-[pull]
-	rebase = true
-[init]
-	defaultBranch = main
 [core]
 	excludesfile = /Users/axross/.gitignore_global
+
+[init]
+	defaultBranch = main
+
+[commit]
+	gpgsign = true
+
+[tag]
+	gpgSign = true
+
+[pull]
+	rebase = true
+
 [push]
 	autoSetupRemote = true
+
+[include]
+	path = ~/.gitconfig-personal
+
+[includeIf "hasconfig:remote.*.url:git@github.com:parsable/**"]
+  path = ~/.gitconfig-parsable

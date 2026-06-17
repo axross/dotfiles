@@ -12,6 +12,8 @@
     ~/.config/starship.toml: config/starship.toml
     ~/.ssh/config: ssh/config
     ~/.gitconfig: gitconfig
+    ~/.gitconfig-personal: gitconfig-personal
+    ~/.gitconfig-parsable: gitconfig-parsable
     ~/.gitignore_global: gitignore_global
     ~/Brewfile: Brewfile
     ~/mise.toml: mise.toml
