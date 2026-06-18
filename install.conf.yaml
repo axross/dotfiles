@@ -19,6 +19,8 @@
     ~/mise.toml: mise.toml
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
+    ~/.claude/skills: claude/skills
+    ~/.claude/settings.json: claude/settings.json
 # - shell:
 #     - description: Brew Bundle
 #       command: brew bundle
