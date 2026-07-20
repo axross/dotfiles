@@ -1,6 +1,8 @@
 ---
 name: english-text-authoring
-description: Apply this skill when drafting or editing any English text that the user (Kohei Asai, GitHub axross) will publish or send under his own name — GitHub PR descriptions, PR and code-review comments and replies, commit messages, Confluence pages and engineering blog posts, Slack messages, Jira comments, and any reply to a teammate. Captures his limited-vocabulary, non-native register, recurring expressions, sentence rhythm, directness, hedging, and emoji habits so the output reads as written by him rather than by an AI. Use even when the request is phrased "draft a reply", "write the PR description", "respond as me", "phrase this", "on my behalf", "reword this comment", or "say this to <teammate>".
+description: The user's personal English writing voice — Kohei Asai (GitHub axross) — for text he publishes or sends under his own name across GitHub PR descriptions, PR and code-review comments and replies, commit messages, Confluence pages and engineering blog posts, Slack messages, Jira comments, and replies to teammates. Captures his limited-vocabulary, non-native register, recurring expressions, sentence rhythm, directness, hedging, and emoji habits so the output reads as written by him rather than by an AI.
+when_to_use: Apply when drafting or editing any English text the user will publish or send under his own name, even when the request is phrased "draft a reply", "write the PR description", "respond as me", "phrase this", "on my behalf", "reword this comment", or "say this to <teammate>".
+user-invocable: false
 metadata:
   type: reference
 ---

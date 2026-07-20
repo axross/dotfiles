@@ -35,6 +35,10 @@ Use the glob tool with pattern `.agents/skills/**` to list all skill files.
 - MUST check that every substantive rule section has a `**Guidelines:**` block after its explanation or demonstration.
 - MUST check that every guideline bullet begins with an RFC-2119 keyword.
 - MUST check that relative Markdown links outside fenced code blocks resolve.
+- MUST check that every `SKILL.md` `name` exactly matches its parent directory name.
+- MUST check that every skill carries both a `description` and a `when_to_use`.
+- MUST check that guideline skills set `user-invocable: false`, and workflow entry-point skills set `user-invocable: true` with an `argument-hint`.
+- MUST check that each `description` is at or under 1,024 characters and each `description` + `when_to_use` combined is at or under 1,536 characters.
 - SHOULD check for stale plain labels such as `Guidelines:` or `Example:` when the project standard is bold subheading-like labels.
 - SHOULD check for stale fenced `text` examples when a blockquote or table would be clearer.
 

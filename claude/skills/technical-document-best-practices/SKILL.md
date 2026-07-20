@@ -1,6 +1,8 @@
 ---
 name: technical-document-best-practices
-description: Apply this skill when drafting, structuring, editing, or reviewing technical documents in the software / web engineering domain — including design docs, RFCs, ADRs, runbooks, READMEs, API tutorials, internal team docs, and engineering blog posts. Covers audience analysis and scope/prerequisite statements, document-type selection (tutorial, how-to, reference, explanation), heading and flow organization, sentence-level clarity (active voice, present tense, short sentences), word-level discipline (consistent terminology, ambiguous pronouns, filler removal), list/table/code-example rules, Mermaid diagram authoring, voice and tone for global and inclusive readers, and maintenance practices that keep docs current. Use even when the request is phrased as "make this clearer", "how should I structure this", "is this readable", or "review my blog post".
+description: The craft of technical documents in the software / web engineering domain — design docs, RFCs, ADRs, runbooks, READMEs, API tutorials, internal team docs, and engineering blog posts. Covers audience analysis and scope/prerequisite statements, document-type selection (tutorial, how-to, reference, explanation), heading and flow organization, sentence-level clarity (active voice, present tense, short sentences), word-level discipline (consistent terminology, ambiguous pronouns, filler removal), list/table/code-example rules, Mermaid diagram authoring, voice and tone for global and inclusive readers, and maintenance practices that keep docs current.
+when_to_use: Apply when drafting, structuring, editing, or reviewing a technical document, even when the request is phrased "make this clearer", "how should I structure this", "is this readable", or "review my blog post".
+user-invocable: false
 ---
 
 # Technical Document Best Practices

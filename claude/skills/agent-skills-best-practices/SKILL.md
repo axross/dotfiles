@@ -1,6 +1,8 @@
 ---
 name: agent-skills-best-practices
-description: Apply this skill whenever creating, refining, restructuring, renaming, or auditing an agent skill under the host project's skill root (e.g., `.agents/skills/`) - drafting a `SKILL.md`, splitting a skill into reference files, tightening a `description`, or deciding where a new rule belongs. Covers agentskills.io frontmatter, host-project harness fields, kebab-case naming, description writing for discovery, section anatomy with concise examples plus RFC-2119 guideline bullets, progressive disclosure, relative-path cross-references, audit checks, and keeping the host project's master skill index in sync.
+description: The authoring discipline for agent skills in the agentskills.io format. Covers frontmatter and the Claude Code invocation-control fields (`when_to_use`, `argument-hint`, `arguments`, `user-invocable`, `disable-model-invocation`), kebab-case naming, the description/when_to_use split for discovery, section anatomy with concise examples plus RFC-2119 guideline bullets, progressive disclosure into `references/`, relative-path cross-references, audit checks, and keeping the host project's master skill index in sync.
+when_to_use: Apply whenever creating, refining, restructuring, renaming, or auditing an agent skill under a skill root — drafting a `SKILL.md`, splitting a skill into reference files, tightening a `description` or `when_to_use`, setting `user-invocable`, or deciding where a new rule belongs. Use for "audit skills", "split this skill", or "where should this rule go".
+user-invocable: false
 ---
 
 # Agent Skills Best Practices
@@ -22,6 +24,7 @@ See [scoping-and-mece.md](./references/scoping-and-mece.md) for:
 See [frontmatter-and-naming.md](./references/frontmatter-and-naming.md) for:
 
 - creating or editing discovery-critical `SKILL.md` frontmatter
+- setting the Claude Code invocation-control fields (`when_to_use`, `user-invocable`, `argument-hint`, `arguments`) by skill archetype
 - choosing the skill directory name and keeping it aligned with the `name` field
 - porting or preserving host-project harness fields
 
@@ -29,8 +32,8 @@ See [frontmatter-and-naming.md](./references/frontmatter-and-naming.md) for:
 
 See [description-writing.md](./references/description-writing.md) for:
 
-- drafting, trimming, or auditing the `description` field
-- making discovery metadata say both what the skill covers and when to apply it
+- drafting, trimming, or auditing the `description` and `when_to_use` fields
+- splitting discovery metadata so `description` says what the skill covers and `when_to_use` says when to apply it
 - adding likely user phrasings and symptom-based triggers without over-broadening the skill
 
 ## Body Content Style
