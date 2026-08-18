@@ -19,7 +19,10 @@
     ~/mise.toml: mise.toml
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
+    ~/.agents/.skill-lock.json: agents/.skill-lock.json
     ~/.claude/skills: claude/skills
+    ~/.claude/hooks: claude/hooks
+    ~/.claude/CLAUDE.md: claude/CLAUDE.md
     ~/.claude/settings.json: claude/settings.json
 # - shell:
 #     - description: Brew Bundle

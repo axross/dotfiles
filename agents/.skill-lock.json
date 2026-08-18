@@ -1,0 +1,78 @@
+{
+  "version": 3,
+  "skills": {
+    "agent-skill-authoring": {
+      "source": "axross/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/axross/skills.git",
+      "skillPath": "skills/agent-skill-authoring/SKILL.md",
+      "skillFolderHash": "36e54fc41c9c38578a2ea2d84dd02f1d179c25a5",
+      "installedAt": "2026-07-29T19:17:37.949Z",
+      "updatedAt": "2026-08-18T22:37:36.556Z"
+    },
+    "conventional-commits": {
+      "source": "axross/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/axross/skills.git",
+      "skillPath": "skills/conventional-commits/SKILL.md",
+      "skillFolderHash": "9cc877a24581def9aed38dabd35aeb240bf19758",
+      "installedAt": "2026-07-29T19:17:37.950Z",
+      "updatedAt": "2026-08-18T22:37:36.559Z"
+    },
+    "loop-engineering": {
+      "source": "axross/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/axross/skills.git",
+      "skillPath": "skills/loop-engineering/SKILL.md",
+      "skillFolderHash": "318e3061f7a99e642a008464fd82f49e2dba80b4",
+      "installedAt": "2026-07-29T19:17:37.951Z",
+      "updatedAt": "2026-08-18T22:37:36.559Z"
+    },
+    "product-requirement-document-authoring": {
+      "source": "axross/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/axross/skills.git",
+      "skillPath": "skills/product-requirement-document-authoring/SKILL.md",
+      "skillFolderHash": "d2c9a2d42703839cceafc75bdf19f22fb70200b2",
+      "installedAt": "2026-07-29T19:17:37.951Z",
+      "updatedAt": "2026-08-18T22:37:36.560Z"
+    },
+    "agent-skill-management": {
+      "source": "axross/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/axross/skills.git",
+      "skillPath": "skills/agent-skill-management/SKILL.md",
+      "skillFolderHash": "ffcf7e2f8e62ab14e42555016c6ab6ff96d6607f",
+      "installedAt": "2026-07-30T15:55:23.480Z",
+      "updatedAt": "2026-08-18T22:37:36.558Z"
+    },
+    "professional-behavior": {
+      "source": "axross/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/axross/skills.git",
+      "skillPath": "skills/professional-behavior/SKILL.md",
+      "skillFolderHash": "1c6058eec30ed409a0a9f7fa82d5bd7c9dffcb91",
+      "installedAt": "2026-07-30T15:55:23.481Z",
+      "updatedAt": "2026-08-18T22:37:36.560Z"
+    },
+    "software-development": {
+      "source": "axross/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/axross/skills.git",
+      "skillPath": "skills/software-development/SKILL.md",
+      "skillFolderHash": "dd6b0a96ec1bf13fac6db87e90b8aa0063092500",
+      "installedAt": "2026-07-30T15:55:23.482Z",
+      "updatedAt": "2026-08-18T22:37:36.560Z"
+    },
+    "technical-document-authoring": {
+      "source": "axross/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/axross/skills.git",
+      "skillPath": "skills/technical-document-authoring/SKILL.md",
+      "skillFolderHash": "eb99a38a47979ea8b6cd3a8e74bd5b20ed436cf7",
+      "installedAt": "2026-07-30T15:55:23.483Z",
+      "updatedAt": "2026-08-18T22:37:36.561Z"
+    }
+  },
+  "dismissed": {}
+}
