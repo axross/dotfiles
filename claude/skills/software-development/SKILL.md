@@ -1,6 +1,6 @@
 ---
 name: software-development
-description: Every task that touches a project — implementing, refactoring, running a project command, or writing a pull request body — even when the request never mentions formatting, linting, comments, dependencies, docs, or descriptions. Also when you need to know how to run one of the project's operations (tests, dev server, build, lint, deploy) and must find it documented or ask. Not for a session that touches nothing, where the conduct baseline applies instead. The baseline discipline — the format/lint loop, scoped change management, risk-surface mapping, and contributor docs.
+description: Every task that touches a project — implementing, refactoring, running a project command, or writing a pull request body. The baseline discipline underneath the specialised skills — keep the change scoped, run the format and lint loop, map what the change puts at risk, and find out how the project is actually run. Applies even when the request never mentions formatting, linting, comments, dependencies, docs, or descriptions, and when you need one of the project's operations — tests, dev server, build, lint, deploy — and must find it documented or ask. Not for a session that touches nothing, where the conduct baseline applies instead.
 user-invocable: false
 ---
 
@@ -18,8 +18,12 @@ See [code-quality.md](./references/code-quality.md) for:
 
 - running the format → lint → fix → re-lint loop after any change
 - language compliance and import hygiene
+- what makes text a comment when the carrying format has no comment syntax of its own, and why a field a program reads as data stays out of scope
 - the comment voice — lowercase prose, no all-caps emphasis, and what keeps its real casing
-- doc-comment and line-comment conventions in source files
+- the admissibility test a comment must clear — nothing recoverable by reading the code or following it — and deletion rather than rewording as the fix
+- doc-comment and explanatory-comment conventions in source files, including the line-comment form and the ~300-character prose budget on an explanatory comment
+- the `TODO(#123):` convention, the unfinished-code test that earns a site the marker, the tracked follow-up it must resolve to, and the standardized forms that may still carry an identifier or a URL
+- where a specification, a domain term, a decision's rationale, or an incompressible file-local "why" goes once a comment may no longer carry it
 
 ## Change Management
 

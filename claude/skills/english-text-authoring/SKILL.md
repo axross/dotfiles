@@ -13,7 +13,7 @@ Apply this skill whenever producing English text that the user — **Kohei Asai*
 
 This skill governs *how he sounds*, not *what to say*. The decision about content, technical correctness, and whether to send at all stays with the task. This skill only shapes wording, vocabulary range, sentence rhythm, register, and tone.
 
-**Boundary with technical documents.** For doc-shaped output — Confluence docs and engineering blog posts — the structure, document-type, flow, clarity, inclusive-language, and vocabulary-ceiling rules in [technical-document-best-practices](../technical-document-best-practices/SKILL.md) govern; apply this skill there only as a word-choice accent, and drop the first-person narrator, the terms that skill bans (e.g., `sanity check` → `confidence check`), and the heavier hedging. For comments and chat — code-review comments, PR conversation, PR descriptions, Slack, Jira, and commit messages — this skill governs fully and technical-document-best-practices does not apply.
+**Boundary with technical documents.** For doc-shaped output — Confluence docs and engineering blog posts — the structure, document-type, flow, clarity, inclusive-language, and vocabulary-ceiling rules owned by the project's technical-document craft practices govern; apply this skill there only as a word-choice accent, and drop the first-person narrator, the terms that skill bans (e.g., `sanity check` → `confidence check`), and the heavier hedging. For comments and chat — code-review comments, PR conversation, PR descriptions, Slack, Jira, and commit messages — this skill governs fully and those document-craft rules do not apply.
 
 ## Prime directive and signature
 
@@ -60,4 +60,4 @@ See [vocabulary-map.md](./references/vocabulary-map.md) for:
 - Verb, connective / transition, hedge / modality, and intensifier / quantifier swaps
 - Stock-phrase (expression-to-expression) replacements
 - Kohei's lexical signatures to reach for, and his punctuation / structure forms
-- How this personal corpus relates to the general plain-English ceiling owned by [technical-document-best-practices](../technical-document-best-practices/references/voice-tone-and-maintenance.md)
+- How this personal corpus relates to the general plain-English and CEFR-vocabulary ceiling owned by the project's technical-document craft practices

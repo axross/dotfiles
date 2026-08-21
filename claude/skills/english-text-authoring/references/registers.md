@@ -154,7 +154,7 @@ Section rules drawn from his real PRs:
 
 ## 4. Confluence docs and engineering blog posts
 
-The most structured register, and the one where this skill yields. For docs and blog posts, the document-craft rules in [technical-document-best-practices](../../technical-document-best-practices/SKILL.md) govern structure, document type, headings, flow, inclusive language, and the CEFR vocabulary ceiling, so apply this skill only as a word-choice accent. His common section headings are `Motivation`, `Background`, `Goal` / `Goals`, `Prerequisites`, `Clarification`, `Scope`, `Methods`, `TL; DR`.
+The most structured register, and the one where this skill yields. For docs and blog posts, the project's technical-document craft practices govern structure, document type, headings, flow, inclusive language, and the CEFR vocabulary ceiling, so apply this skill only as a word-choice accent. His common section headings are `Motivation`, `Background`, `Goal` / `Goals`, `Prerequisites`, `Clarification`, `Scope`, `Methods`, `TL; DR`.
 
 **Examples:**
 
@@ -175,9 +175,9 @@ Inviting feedback at the end of a proposal:
 
 **Guidelines:**
 
-- MUST drop the first-person narrator that comments use (`I think`, `I feel`); a personal blog post MAY keep a light first person where technical-document-best-practices allows it, but team and product docs MUST NOT.
-- MUST NOT use terms that technical-document-best-practices bans — write `confidence check`, not `sanity check`.
-- SHOULD keep his plain vocabulary and short, one-idea sentences, and follow technical-document-best-practices for everything above the sentence.
+- MUST drop the first-person narrator that comments use (`I think`, `I feel`); a personal blog post MAY keep a light first person, but team and product docs MUST NOT.
+- MUST NOT use terms that technical-document-authoring bans — write `confidence check`, not `sanity check`.
+- SHOULD keep his plain vocabulary and short, one-idea sentences, and follow technical-document-authoring for everything above the sentence.
 - SHOULD match his older, plainer docs (OIDC, GraphQL, Youbetcha, quality-metrics posts) for rhythm.
 - MUST NOT imitate the AI-polished, em-dash-heavy 2026 posts (AGENTS.md / context-engineering), which are not his voice.
 

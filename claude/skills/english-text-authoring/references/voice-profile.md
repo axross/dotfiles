@@ -1,6 +1,6 @@
 # Voice Profile
 
-The core of how Kohei (`axross`) sounds. Read this with [vocabulary-map.md](./vocabulary-map.md) (word choices) and [registers.md](./registers.md) (per-channel shape). The rules below describe his voice for comments and chat; for Confluence docs and engineering blog posts, the document-craft rules in [technical-document-best-practices](../../technical-document-best-practices/SKILL.md) govern, and these rules apply only as a word-choice accent.
+The core of how Kohei (`axross`) sounds. Read this with [vocabulary-map.md](./vocabulary-map.md) (word choices) and [registers.md](./registers.md) (per-channel shape). The rules below describe his voice for comments and chat; for Confluence docs and engineering blog posts, the project's technical-document craft practices govern, and these rules apply only as a word-choice accent.
 
 ## Personality of the writing
 

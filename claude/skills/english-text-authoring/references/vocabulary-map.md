@@ -4,7 +4,7 @@ The word-to-word and expression-to-expression lookup. The left column is what a 
 
 This is the corpus that keeps the vocabulary *range* narrow — the single strongest signal of his voice. He reuses a small set of words on purpose; widening it reads as not-him.
 
-These tables capture Kohei's *personal* lexical choices, not a general readability standard. The general plain-English / CEFR-vocabulary ceiling for technical documents is owned by [technical-document-best-practices](../../technical-document-best-practices/references/voice-tone-and-maintenance.md); his choices mostly align with it but are scoped tighter. In a Confluence doc or blog post, that skill's ceiling governs (see §4 of [registers.md](./registers.md)).
+These tables capture Kohei's *personal* lexical choices, not a general readability standard. The general plain-English / CEFR-vocabulary ceiling for technical documents is owned by the project's technical-document craft practices; his choices mostly align with it but are scoped tighter. In a Confluence doc or blog post, that skill's ceiling governs (see §4 of [registers.md](./registers.md)).
 
 ## Verbs
 
@@ -30,7 +30,7 @@ Maps default / AI-fluent verbs to the verb forms Kohei actually writes.
 **Guidelines:**
 
 - MUST swap a left-column verb for the right-column form before it enters a draft.
-- MUST write `use` in new docs, even though `leverage` and `utilize` appear in some of his older Confluence docs ("leverage cookie-based authentication", "utilize SQLite relationship"); technical-document-best-practices grades both above the C1 ceiling, and in comments he almost always says `use`.
+- MUST write `use` in new docs, even though `leverage` and `utilize` appear in some of his older Confluence docs ("leverage cookie-based authentication", "utilize SQLite relationship"); technical-document-authoring grades both above the C1 ceiling, and in comments he almost always says `use`.
 - MUST NOT reach for `leverage` or `utilize` in new docs.
 
 ## Connectives and transitions
@@ -128,7 +128,7 @@ Lists words and forms Kohei favors that an AI would not default to, which read a
 - **`-wise`** — `concept-wise`, `performance-wise`; also "in both appearance and purpose aspects" and "in <X> aspect".
 - **`trade-off`** (hyphenated) — "It's a known trade-off."
 - **`overkill`**, **`workaround`**, **`hacky`**, **`nitpicking`** / **`too nitpicking`**.
-- **`sanity check`** / **`checkup`**, **`tie breaker`** — `sanity check` is in-voice for comments and chat, but MUST become `confidence check` in docs, which technical-document-best-practices bans as ableist.
+- **`sanity check`** / **`checkup`**, **`tie breaker`** — `sanity check` is in-voice for comments and chat, but MUST become `confidence check` in docs, which technical-document-authoring bans as ableist.
 - **`for the sake of`**, **`for now`**, **`as is`** ("keep it as is").
 - **`folks`** / **`other folks`**, **`guys`** ("Thanks guys!").
 - **`Generically`** as a broad-statement opener (= generally/broadly).
@@ -139,7 +139,7 @@ Lists words and forms Kohei favors that an AI would not default to, which read a
 **Guidelines:**
 
 - SHOULD reach for these signature words and forms (used correctly), as they read as him.
-- MUST swap `sanity check` for `confidence check` in docs, since technical-document-best-practices bans `sanity check` as ableist.
+- MUST swap `sanity check` for `confidence check` in docs, since technical-document-authoring bans `sanity check` as ableist.
 
 ## Punctuation and structure (when an AI would do X, do Y)
 
