@@ -1,47 +1,70 @@
-# Independent Review
+# Independent Review and Readiness
 
-Apply this reference for the machine-event tail after you push and request review, and for addressing what the review and CI return. The review request itself (opening the draft pull request, the trigger phrase) is covered in the loop-engineering skill's Phase 3; this reference owns the waiting tail and the addressing mechanics.
+Apply this reference after verified implementation and whenever external review or required checks return. Project policy chooses the reviewer and delivery mechanism; where it is silent, independent review remains mandatory.
 
-## CI and Review Tail
+## Independence
 
-After you push and request review, machine events run on their own: the merge-checks CI and the independent review, plus a per-PR preview deploy where the project has one. Two mechanisms can tell you one finished, and they are not interchangeable — resolve which of them you have before choosing any interval.
-
-**Event delivery** is a harness pushing pull-request activity into the running session (in Claude Code, a pull-request activity subscription; in Codex, whatever equivalent its harness exposes). Where it exists it is the first choice, because it costs nothing while nothing is happening. It is also **incomplete**: such a subscription carries review comments and failing checks, while the _success_ transitions — CI going green, a push landing, a conflict clearing — arrive late or not at all. Green CI is one of the three flip conditions below, so a subscription on its own can leave a finished change waiting forever.
-
-**A scheduled self-wake** is therefore kept as the backstop even while a subscription is active, and is the whole mechanism where no subscription exists (in Claude Code, `send_later`, which delivers a message back into this same session and survives container reclaim; in Codex, whatever equivalent its harness exposes). A subscription changes what that wake is _for_ — from detection to a backstop — never whether there is one. A harness offering delivery but no scheduler leans on delivery alone, which is worth recording, because a success transition missed there strands the run rather than merely delaying it. The wake's interval is not a property of the clock, the session, or the harness — it is a property of the check being waited on.
-
-Derive each wake from the checks still pending, not from a fixed ladder: place the first one just past where the fastest pending check should already have decided, then step across the slowest pending check's median-to-maximum band, then treat a check still pending beyond that band as anomalous rather than as more of the same wait. Worked example, from the reference project's own recent runs — its merge-checks CI has a median around 30 seconds and a maximum under a minute, while its independent review runs a median near 9 minutes against a 30-minute timeout declared in the workflow. That profile puts the first wake about a minute out, where CI is already decided and a red result can start the addressing loop immediately; the next near 9 minutes; one more around 13, where the review's observed maximum sits; and anything past that onto the anomaly path rather than into a standing cadence. Reproduce the derivation against your own checks — the numbers themselves do not travel.
-
-The flip out of draft turns on **three** conditions: green CI, a clean independent review with no blocking findings, and the approved plan revision still being the one the work implements. The third is the one a waiting tail forgets, because it is not a machine event and nothing in the tail moves it: a plan revised mid-flight — [writer-ownership-and-recovery.md](./writer-ownership-and-recovery.md)'s Case B — leaves CI green and the review clean, so a run checking only the two machine outcomes would flip work ready against a plan nobody approved. The condition holds when the canonical plan content has not moved since the approval the work was built against and no revision is awaiting approval; [plan-document.md](./plan-document.md)'s Plan Revision Identity owns how that revision is derived and compared.
+The author cannot certify its own work. Independence must come from the reviewer arrangement project policy requires, not from a label applied inside the authoring context.
 
 **Guidelines:**
 
-- MUST resolve the waiting mechanism before the first wake: subscribe where the harness delivers pull-request activity, and schedule a self-wake where it provides one. Where it provides neither, end the turn and wait for the human to resume.
-- MUST keep that self-wake scheduled wherever the harness provides one, even while a subscription is active, and record in the status block when only delivery is available.
-- SHOULD derive each wake from the pending checks' own completion profiles as above, measuring them from the project's recent runs rather than carrying another project's figures over.
-- SHOULD NOT tune a wake to the harness's prompt-cache TTL: it is a property of the session rather than of the awaited work, and on a harness whose cache outlives the wait it separates no two intervals.
-- MUST flip the pull request to ready once all three conditions above hold and not before, then update the status block, deliver the Ready-to-Merge Handoff in the turn output, and end the turn.
-- MUST, on review findings or red CI, enter the addressing mechanics below; on only some checks resolved, keep waiting for the rest.
-- MUST stop waiting at the dormancy cap in the skill's Termination Guard and go dormant with a status-block note rather than wait indefinitely.
+- MUST NOT self-certify independent review.
+- MUST treat an unavailable advisory review as no waiver of mandatory external review.
+- MUST request a fresh independent review after every fix batch using the project's independent-review input policy; the advisory stage's private ledger restrictions do not redefine the external review's policy.
+- MUST treat missing required review material as a non-complete review result, never as a clean verdict.
 
 ## Addressing Findings
 
-When the independent review's comments land, read them (their author is the review bot, not you and not a human) together with the CI status. Address blocking findings and unmet acceptance criteria, then tie each resolution to the commit that fixed it.
+Address every blocking finding and unmet acceptance criterion, preserving finding identity and evidence between rounds. A finding that changes the approved plan returns the run to plan revision and fresh approval.
 
 **Guidelines:**
 
-- MUST address and resolve each blocking finding (whatever the posted-review policy marks merge-blocking) and every unmet acceptance criterion, pushing fixes to the same branch and re-running the relevant verification after each batch.
-- MUST, for every review comment a commit resolves, reply on that comment's thread with a marked comment — the project's agent-comment marker line, then a line beginning **`Resolved in <short-hash>`** (the 7-character hash of the fixing commit) and a one-sentence summary — then resolve the thread. Reference the same hash on each comment one commit resolves.
-- MUST re-request review by posting the review trigger phrase again after a batch of fixes, and repeat up to the round cap in the skill's Termination Guard; on non-convergence, record what still fails and go dormant.
-- MUST escalate through the question UI when a finding or human comment is ambiguous or needs a product or architecture decision, rather than guessing.
-- MUST NOT gate the ready flip on your own assessment — only the three conditions stated above flip draft→ready.
+- MUST preserve finding IDs, severities, citations, dispositions, and their fixing commits under the posted-review policy.
+- MUST rerun affected verification after fixes and obtain a fresh review of the resulting content.
+- MUST surface ambiguous product or architecture findings to the human rather than guessing.
 
-## Keeping the Branch Mergeable
+## Mergeability and Conflict Remediation
 
-When the base branch moves and the pull request conflicts, the branch must be brought back to mergeable before the ready flip.
+Mergeability is a ready-gate prerequisite and a transition to remediation when
+it fails. The project chooses how its branch incorporates the base; Loop keeps
+the distinction between mechanical repair and a decision that changes intent.
 
 **Guidelines:**
 
-- MUST bring the base branch into the branch and resolve the conflicts when GitHub marks the pull request not mergeable or an update/rebase fails, then re-run the verification the touched surface requires and note it in the pull request.
-- MUST resolve mechanical conflicts yourself — imports, independent or adjacent edits, regenerated lockfiles — but ask the human how to reconcile a genuine judgment call (both sides changed the same logic on purpose) rather than guessing.
-- MUST NOT force-push to resolve a conflict; merge the base in and add the resolution as a commit, preserving history.
+- MUST restore the delivery target to a mergeable state under project branch policy before treating the ready gate as satisfied.
+- MUST resolve mechanical conflicts within the approved scope, including independent or adjacent edits and reproducible generated artifacts, but return intentional competing changes to the human when reconciling them requires product or architecture judgment; a resulting plan change follows plan revision and reapproval.
+- MUST rerun the verification required by every surface touched while incorporating the base or resolving conflicts, and record the resulting evidence.
+- MUST request fresh independent review after known conflict-resolution or other material-fix changes, record the material the reviewer actually covered, and never claim an earlier review covered those edits.
+- MUST NOT turn that operational re-review rule into universal exact-head equality, automatic invalidation on every concurrent update, or a material-bound operation grant when the selected provider and project policy explicitly accept a completion race.
+
+## External Round Cap
+
+The post-delivery address/review loop allows **4** rounds. After non-convergence, record unresolved findings and checks and return a decision-waiting result.
+
+**Guidelines:**
+
+- MUST stop autonomous addressing after four rounds and report the unresolved state.
+- MUST NOT read the cap as authorization to publish, schedule, or trigger another review.
+
+## Waiting Bound
+
+Waiting is host execution, not loop semantics. The semantic bound remains the awaited work's declared timeout plus a margin, or **2 hours** where no timeout is declared. The budget resets when a new result arrives and a new push or equivalent revision starts fresh checks.
+
+**Guidelines:**
+
+- MUST report a still-pending result as partial or unavailable when the bound expires.
+- MUST NOT require polling, subscriptions, schedulers, cache-TTL measurements, or a particular resume mechanism.
+- MUST NOT infer scheduling permission from the existence of this bound.
+- MUST stop autonomous waiting at that bound, preserving recovery evidence; human waits end the turn and are never polled.
+- MUST resolve which wait mechanism the session actually has before the first wake, rather than tuning an interval against a mechanism it turns out not to expose, and record when only one of delivery and a scheduled wake is available — a success transition missed by delivery alone strands the run rather than merely delaying it.
+- MUST scope any permitted wait mechanism to this tail, and MUST tear down every mechanism it armed in the same turn as the stop, at each of the three stops: the ready transition, non-convergence at the round cap, and the waiting bound. This holds with no exception, including where follow-up work on the same change is already anticipated — a mechanism left armed past the tail wakes the run on unrelated activity it can do nothing with, and never on the later human comment a resume carries instead.
+
+## Ready Gate
+
+A change is ready only when all required checks are green, mandatory independent review is clean, the implemented plan revision is still approved, all required evidence is present, and the delivery target is mergeable under project policy.
+
+**Guidelines:**
+
+- MUST publish the ready transition as soon as every condition above is satisfied; the gate itself is sufficient warrant for that one effect and needs no separate operation grant. This authority does not extend to merge, release, deployment, scheduling, or any other unnamed effect, which stay with the human under project policy.
+- MUST keep the change not ready while any condition above is unknown, unavailable, stale, or failed.
+- MUST re-enter review when later human feedback changes delivered content.

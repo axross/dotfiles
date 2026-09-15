@@ -1,53 +1,63 @@
 # Run State and Reporting
 
-Apply this reference when recording the run's durable state, and when the run reaches convergence and reports back. It expands the [Run State and Reporting](../SKILL.md) section in the parent skill.
+Apply this reference when persisting recoverable state or reporting a phase result. Storage and publication mechanics belong to the host and project; the loop owns the meaning that must survive.
 
-## GitHub as Lightweight State
+## Semantic Run State
 
-State lives in this running session; GitHub carries a thin breadcrumb — invisible to a human reading GitHub's rendered page, and fully visible to any agent, including this loop's own participants, that reads the raw body — so a resumed or reclaimed session can recover. The run posts no status or attention comments. It authors exactly three kinds: the dedicated review request (Phase 3), the marked review-thread replies that tie each resolved finding to its commit (Phase 4), and — only where the issue body cannot spare the room — the marked archival comment holding the original description (Phase 1, see [plan-document.md](./plan-document.md)).
-
-**Guidelines:**
-
-- MUST keep the run's state in a single **status block**: an HTML comment (`<!-- ... -->`) embedded in the pull request description — invisible in the rendered UI, present in the raw markdown. Before the pull request exists, keep the same block in the issue body. Record the current phase, the review-round count, what the run is waiting on, and any open question; update it in place.
-- MUST NOT post a separate status comment or @mention the maintainer for attention; convey ready-to-merge, dormancy, and non-convergence in the turn output instead. The archival comment above is not an exception to this — it carries the original description, never run state.
-- MUST NOT write the literal review trigger phrase anywhere except the dedicated review request — a comment-triggered workflow fires on that phrase appearing anywhere in a body. Refer to it as "the independent review" everywhere else.
-- MUST read the status block through a channel adequate to what it carries, and reconstruct from the signals that survive where no such channel exists — [github-conventions.md](./github-conventions.md) owns that rule for every body the loop reads, and states it once. The block being an HTML comment is what makes it acute here: a sanitizing read removes it whole, returning a body that looks like one carrying no state at all.
-
-Reconstructing state and resuming the one pending step on an actual resume is [resuming-and-handoff.md](./resuming-and-handoff.md)'s own rule, stated there once rather than here as well.
-
-## Delegated Run State
-
-When the run delegates implementation, the state that matters on a resume grows: which mode the run is in, who wrote last, and how far the current attempt got. Session state carries the detail; the status block carries only what a fresh session cannot re-derive.
-
-Session state should hold the execution mode (delegated, single-agent, or recovering), the worker-resolution source (explicit, custom, built-in, or none), implementation status, the current plan revision and task phase, the attempt number, the writer owner, any opaque continuation handle, model and effort certainty, and the reason for a fallback or recovery.
-
-The status block adds only durable recovery information: execution mode, implementation status, the approved plan revision, the latest coherent implementation HEAD where available, phase, review round, waiting state, any open question, and the delegation-permission determination together with any answer the human gave it.
-
-Where the pre-flight review runs, its round number and waiting state join that list unconditionally. Its finding entries join it only while the run is parked on the human question that needs them there, and are cleared before the run resumes past it — durability is earned by the same reasoning the principle above gives: a fresh review worker produces a _different_ finding set, so a ledger lost mid-park cannot be re-derived by re-running the review, while one lost between parks costs nothing. [pre-flight-review.md](./pre-flight-review.md)'s Ledger Durability owns exactly when the entries are and are not written, their ceiling, and what a run does when it cannot read the block back.
+Durable state is whatever a fresh executor cannot safely derive: target, phase, approved plan revision and approval evidence, scoped operation grants, assignments and attempts, latest results, self-review evidence, checks, review round, open findings at their permitted durability, unresolved decisions or authorization, the execution arrangement and how it was settled, actual revision and uncommitted state, remaining processes, and unknown external effects.
 
 **Guidelines:**
 
-- MUST NOT duplicate the commit list into the status block; Git history and the completion receipt stay authoritative for individual commits.
-- MUST keep opaque worker identifiers, transcript paths, and other ephemeral harness details in session state rather than writing them to GitHub.
-- MUST treat a status-block entry that names no determination as invalid; the delegation-permission field carries one of the three results — permitted, barred, or undetermined — together with whichever of that determination's grounds it rests on, quoted or observed as [subagent-delegation.md](./subagent-delegation.md#harness-permission-determination) requires. That reference owns the set of grounds; read it there rather than from a list here, which would drift the next time it gains one.
+- MUST persist only through a currently permitted project mechanism and preserve append-only history.
+- MUST NOT require an HTML status block, a particular service, a local path, or a byte-extraction command in the portable core.
+- MUST keep evidence locators and revision identities sufficient to detect stale state.
+- MUST record how the execution arrangement was settled, not only which one ran: what the determination rested on, quoted where it rests on a stated condition and recorded as an observation where it rests on none, and whether a question was ever put to the human. A record naming no grounds is incomplete, and recording a decline the human never gave claims an answer nobody made.
+- MUST preserve the substantive self-review outcome, unresolved findings, and limitations in permitted internal handoffs. When a persistence surface prohibits requirement-derived text, project only code or process observations and requirement locators onto that surface; the projection replaces neither the plan nor fresh review input.
 
-## Reporting a Delegated Run
+## Scoped Operation Grants
 
-Execution detail belongs inside the existing report, not beside it. A separate agent-activity log competes with the summary the human actually reads.
+An operation grant records actual human authorization for one or more concrete effects. It remains separate from plan approval, execution capability and a host's permission to use a tool. Compatible effects may share one grant, but the grant is no broader than the targets, operations and consequences the human authorized.
 
 **Guidelines:**
 
-- MUST fold into the completion summary and the ready-to-merge handoff: whether the run was delegated, fell back to single-agent, or recovered; the worker-resolution source; the delegation-permission determination and, where a question was put, the human's answer; model and effort as verified, declared, or unknown for every role the run spawned, including a pre-flight review worker where the stage ran; the fallback or recovery reason; any skipped or unavailable verification; and residual worker or routing risk.
-- MUST NOT duplicate that information into a separate verbose activity log.
-- MUST report a review worker's disclosure that it read run state — its own status block or another run's — while judging the diff (see [pre-flight-review.md](./pre-flight-review.md)'s Run State Is Not Input), so an exposure the write/clear pairing failed to prevent does not go unrecorded.
+- MUST record each grant's target, permitted operations, human-evidence locator, applicable route and lifetime, limits, and explicit exclusions without credentials or sensitive payloads.
+- MUST name an automation trigger's intended downstream effects, including billed execution, protected-context access or publication where applicable, before treating those effects as part of the grant.
+- MUST compare every proposed effect with the recovered target, operation, route, lifetime, limits and exclusions; carry a matching grant forward across phases, sessions and executors, and ask only for an absent or expanded effect.
+- MUST treat a changed target, route, expired lifetime, exhausted limit or missing evidence as authorization-waiting for the unmatched effect, without blocking independent effects covered by another valid grant.
+- MUST NOT infer setup, secrets, settings, production enablement, merge, release, deployment or scheduling authority from a grant that does not name that effect. Readiness publication is not one of these grant-gated effects: [independent-review.md](./independent-review.md)'s ready gate, once satisfied, is its own sufficient warrant.
+- MUST NOT bind a grant to an exact material revision unless the human explicitly made that revision part of its scope; material currency and review validity remain separate evidence questions.
+
+## Phase Reporting
+
+Report the result state—complete, partial, decision-waiting, authorization-waiting, unavailable, failed, or outcome-unknown—and the evidence supporting it. Exact commands and outcomes matter more than a generic success claim.
+
+**Guidelines:**
+
+- MUST report the approved revision, changed files or delivered content, verification evidence, review evidence, unresolved work, residual risk, remaining processes, and blockers where relevant.
+- MUST distinguish skipped, unavailable, denied, failed, and unknown work.
+- MUST NOT report child completion, self-review, or missing evidence as whole-change readiness.
+
+## Model and Effort Certainty
+
+Whether an actor is _capable_ and which model it _ran_ are separate questions, and a host may answer the second only partially. Reporting a configured value as a confirmed one turns an unverified assumption into a claim the human cannot audit, so each is classified rather than asserted:
+
+- `verified` — a runtime, transcript, or telemetry reading confirms the actual value
+- `declared` — configuration or a spawn argument states the value, but what ran could not be independently confirmed
+- `unknown` — the session exposes too little to say
+
+**Guidelines:**
+
+- MUST classify model and effort with one of those three values, independently of each other, for every role the run delegates to, and MUST NOT report a `declared` value as `verified`.
+- MUST treat a spawn-time model argument that overrides an actor definition's pinned value as discarding that pin, and MUST NOT report the pinned value as what that run used — it is not even `declared` for that run. Record the override and its reason.
+- MUST NOT require a runtime-verified value before delegating; a stricter policy than this belongs to a project or host that wants it.
+- MUST fold the classification into the completion report for every role the run delegated to, rather than into a separate activity log beside it.
 
 ## Ready-to-Merge Handoff
 
-When a run flips its pull request to ready, that same chat turn doubles as a **verification brief**: hand the human everything they need to exercise the change before merging. Deliver it in the session's chat turn output only — never as a GitHub comment.
+The completion report is also the human's verification brief.
 
 **Guidelines:**
 
-- MUST name, in the handoff and in any completion claim, the tracking issue, the pull request, the approved plan revision the work implements, and the independent review's outcome (round count and verdict), with links where they exist — a completion report that cannot cite its pull request, its plan revision, and its review is reporting work that is not ready.
-- MUST judge whether the change is human-observable first. Write the brief only when the change alters something a human can see or operate — a route, a rendered surface, a command, an admin view. For a purely internal change (build, refactor, non-visible logic) with nothing to walk through, say so in one line and stop.
-- MUST spell out what to exercise and how, derived from the plan's acceptance criteria and the changed surfaces: the specific routes, pages, or commands to open, and the states to exercise (loading, empty, error, responsive widths, theme, locale) where they apply.
-- SHOULD hand over a per-PR preview URL when the project deploys one — sourced from the newest preview-deploy comment and verified against the branch-head SHA, never constructed from memory. When there is no usable preview, give the local verification steps instead; never fabricate a URL.
+- MUST identify the work target, delivery target where one exists, approved plan revision, required-check results, independent-review outcome and round count, mergeability, and any residual risk.
+- MUST give concrete manual exercise steps for human-observable changes and say plainly when none apply.
+- MUST source any preview or artifact locator from verified current evidence rather than constructing it from memory.
