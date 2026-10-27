@@ -10,7 +10,9 @@
 - link:
     ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
     ~/.config/starship.toml: config/starship.toml
-    ~/.ssh/config: ssh/config
+    ~/.ssh/config:
+      path: ssh/config
+      create: true
     ~/.gitconfig: gitconfig
     ~/.gitconfig-personal: gitconfig-personal
     ~/.gitconfig-parsable: gitconfig-parsable
@@ -20,8 +22,15 @@
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
     ~/.agents/.skill-lock.json: agents/.skill-lock.json
-    ~/.claude/skills: claude/skills
-    ~/.claude/hooks: claude/hooks
+    ~/.claude/skills:
+      path: claude/skills/*
+      glob: true
+      exclude:
+        - claude/skills/synced
+      create: true
+    ~/.claude/hooks:
+      path: claude/hooks
+      create: true
     ~/.claude/CLAUDE.md: claude/CLAUDE.md
     ~/.claude/settings.json: claude/settings.json
 # - shell:
