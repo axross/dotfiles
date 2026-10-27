@@ -17,14 +17,14 @@
       "Bash(git fetch *)",
       "Bash(git merge-tree *)",
       "Bash(git ls-tree *)",
-      "Bash(git -C * status *)",
-      "Bash(git -C * show *)",
-      "Bash(git -C * diff *)",
-      "Bash(git -C * log *)",
-      "Bash(git -C * fetch *)",
-      "Bash(git -C * merge-tree *)",
-      "Bash(git -C * ls-tree *)",
-      "Bash(git -C * stash *)",
+      "Bash(git status *)",
+      "Bash(git show *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git fetch *)",
+      "Bash(git merge-tree *)",
+      "Bash(git ls-tree *)",
+      "Bash(git stash *)",
       "Bash(gh search *)",
       "Bash(gh repo list *)",
       "Bash(gh repo view *)",
@@ -37,6 +37,7 @@
       "Bash(gh pr diff *)"
     ]
   },
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -59,8 +60,13 @@
       }
     ]
   },
-  "effortLevel": "xhigh",
-  "theme": "dark-ansi",
-  "skipAutoPermissionPrompt": true,
-  "model": "opus[1m]"
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    },
+    "claude-sonnet-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "theme": "dark-ansi"
 }
