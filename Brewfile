@@ -17,7 +17,7 @@ brew "libyaml"
 
 cask "1password"
 cask "android-studio"
-cask "cleanshot"
+cask "craft"
 cask "figma"
 cask "font-jetbrains-mono"
 cask "font-symbols-only-nerd-font"
@@ -30,7 +30,6 @@ cask "proxyman"
 cask "raycast"
 cask "slack"
 cask "steermouse"
-cask "visual-studio-code"
 
 mas "MeetingBar", id: 1532419400
 mas "Xcode", id: 497799835
