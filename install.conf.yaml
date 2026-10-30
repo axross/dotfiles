@@ -7,6 +7,9 @@
     - ~/.config/karabiner
     - ~/.ssh
     - ~/Repositories
+- create:
+    agents/skills:
+      mode: 0755
 - link:
     ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
     ~/.config/starship.toml: config/starship.toml
@@ -22,12 +25,7 @@
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
     ~/.agents/.skill-lock.json: agents/.skill-lock.json
-    ~/.claude/skills:
-      path: claude/skills/*
-      glob: true
-      exclude:
-        - claude/skills/synced
-      create: true
+    ~/.agents/skills: agents/skills
     ~/.claude/hooks:
       path: claude/hooks
       create: true
