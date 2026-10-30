@@ -18,7 +18,8 @@ Every tracked path and what it owns:
 | `claude/hooks/`                                           | Claude Code hooks, installed as a directory link. `session-start.sh` restores mise's PATH.                        |
 | `claude/settings.json`                                   | Claude Code harness settings: permission allowlist, hooks, model, effort level.                                    |
 | `agents/.skill-lock.json`                                | The record of which agent skills are installed and from which upstream. The `skills` CLI writes it through its link at `~/.agents/.skill-lock.json`. Generated — never hand-edited. |
-| `.gitignore`                                             | Ignores everything under `claude/skills/`, so no skill content is ever committed.                                  |
+| `agents/skills/`                                         | The installed skill bodies, written by the `skills` CLI through the `~/.agents/skills` directory link. Gitignored except `.gitkeep`, which keeps the directory present on a fresh clone. |
+| `.gitignore`                                             | Ignores everything under `claude/skills/` and `agents/skills/` (except `agents/skills/.gitkeep`), so no skill content is ever committed. |
 | `gitconfig`                                              | Shared git config. Includes `gitconfig-personal` always, and `gitconfig-parsable` only for `git@github.com:parsable/**` remotes. |
 | `gitignore_global`, `ssh/config`, `zshrc`, `zshenv`       | Shell and SSH configuration, each linked to its dotfile.                                                           |
 | `config/`                                                 | XDG-style config: `starship.toml` and `karabiner/karabiner.json`.                                                 |
@@ -40,7 +41,7 @@ Every tracked path and what it owns:
 
 ## The Agent Skill Set
 
-Skills are **installed, never vendored.** Every skill comes from one of three upstreams, and this repository holds none of their content — only `agents/.skill-lock.json`, which records each installed skill and its source:
+Skills are **installed, never vendored.** Every skill comes from one of three upstreams. Their bodies live in this checkout under `agents/skills/`, but are gitignored; what is committed is `agents/.skill-lock.json`, which records each installed skill and its source:
 
 | Upstream                                                              | Visibility |
 | --------------------------------------------------------------------- | ---------- |
@@ -48,7 +49,7 @@ Skills are **installed, never vendored.** Every skill comes from one of three up
 | [`axross/secret-skills`](https://github.com/axross/secret-skills)     | private    |
 | [`axross/parsable-skills`](https://github.com/axross/parsable-skills) | private    |
 
-The `skills` CLI installs each skill into `~/.agents/skills/<name>` and links it from `~/.claude/skills/<name>`. Neither path is inside this repository. [`README.md`](./README.md) carries the command that restores the whole set from the lockfile after a clone.
+The `skills` CLI installs each skill into `~/.agents/skills/<name>` and links it from `~/.claude/skills/<name>`. `~/.agents/skills` is itself a dotbot directory link to `agents/skills/`, so every install lands in this checkout. The `~/.claude/skills` glob over `claude/skills/*` stays in the map only for a local skill directory placed there; nothing populates it today. [`README.md`](./README.md) carries the command that restores the whole set from the lockfile after a clone.
 
 Add or remove a skill with the CLI, then commit the lockfile it rewrote:
 
@@ -64,8 +65,8 @@ The lockfile records sources, not versions. `npx skills add` always installs the
 **Guidelines:**
 
 - MUST consult the `agent-skill-management` skill before adding, renaming, moving, or removing a skill, and to route a defect found in an installed skill.
-- MUST fix a skill defect in its upstream repository and reinstall. An edit to an installed copy is outside this repository and is lost on the next install.
-- MUST NOT commit skill content to this repository. This deliberately departs from `agent-skill-management`'s rule to commit installed skill roots: that rule serves a repository that authors skills, and this one only consumes them.
+- MUST fix a skill defect in its upstream repository and reinstall. An installed copy under `agents/skills/` is gitignored, so an edit to it is never recorded and is lost on the next install.
+- MUST NOT commit skill content to this repository; keep `agents/skills/` ignored except its `.gitkeep`. This deliberately departs from `agent-skill-management`'s rule to commit installed skill roots: that rule serves a repository that authors skills, and this one only consumes them.
 - MUST commit the lockfile after every `npx skills add` or `remove`, since it is the only record of the installed set.
 - MUST NOT put a rule specific to one project in a global skill; it belongs in that project's own agent file.
 
@@ -83,7 +84,7 @@ grep -o '\./skills/[^)]*' claude/CLAUDE.md | sed 's|^\.|'"$HOME"'/.claude|' | xa
 **Guidelines:**
 
 - MUST run `jq empty claude/settings.json` after editing it. A syntax error there surfaces only when the next session loads it.
-- MUST use links of the form `./skills/<name>/SKILL.md` from `claude/CLAUDE.md`. That form resolves from `~/.claude/CLAUDE.md`, where the agent reads it, but not inside this repository, since the skills are not here. Check them with the last command above, not with `check-links.mjs`.
+- MUST use links of the form `./skills/<name>/SKILL.md` from `claude/CLAUDE.md`. That form resolves from `~/.claude/CLAUDE.md`, where the agent reads it, but not inside this repository, since `claude/skills/` holds no skills. Check them with the last command above, not with `check-links.mjs`.
 - MUST verify a shell or hook change by starting a new session or shell, since nothing rebuilds and a syntax error surfaces only at load.
 - MUST report which checks ran and which could not, because no CI will catch what a session skips (see below).
 

@@ -22,6 +22,7 @@
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
     ~/.agents/.skill-lock.json: agents/.skill-lock.json
+    ~/.agents/skills: agents/skills
     ~/.claude/skills:
       path: claude/skills/*
       glob: true
