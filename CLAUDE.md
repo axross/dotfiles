@@ -14,7 +14,6 @@ Every tracked path and what it owns:
 | [`install`](./install)                                   | dotbot entry point. Syncs the `dotbot` submodule, then applies the map.                                            |
 | `dotbot/`                                                | Vendored submodule, pinned at v1.23.1. Never edit; `./install` updates it.                                        |
 | [`claude/CLAUDE.md`](./claude/CLAUDE.md)                 | The **user-scope** agent agreement, installed to `~/.claude/CLAUDE.md`. It applies to every project, so it holds nothing specific to this repository — that is this file's job. |
-| `claude/skills/`                                         | Local skill directories, glob-linked one by one into `~/.claude/skills/` (excluding `synced/`). Its contents are gitignored; upstream skills never live here (see below). |
 | `claude/hooks/`                                           | Claude Code hooks, installed as a directory link. `session-start.sh` restores mise's PATH.                        |
 | `claude/settings.json`                                   | Claude Code harness settings: permission allowlist, hooks, model, effort level.                                    |
 | `agents/.skill-lock.json`                                | The record of which agent skills are installed and from which upstream. The `skills` CLI writes it through its link at `~/.agents/.skill-lock.json`. Generated — never hand-edited. |
@@ -32,9 +31,8 @@ Every tracked path and what it owns:
 **Guidelines:**
 
 - MUST add a `link:` entry to [`install.conf.yaml`](./install.conf.yaml) for every new top-level file, then run `./install`. A tracked file with no entry is committed but never reaches `$HOME`, which looks like the change silently doing nothing.
-- MUST NOT add an entry for a file created inside an already-linked directory. `~/.claude/hooks` is a **directory** link, so its contents follow automatically.
-- MUST keep `claude/skills/synced` in the `~/.claude/skills` glob's `exclude` list. `synced/` is managed by the Claude desktop app and must not be linked.
-- MUST NOT name a local directory in `claude/skills/` after a skill the `skills` CLI installs. `relink: true` lets dotbot replace the CLI's link at `~/.claude/skills/<name>`, and the CLI would replace dotbot's on its next run.
+- MUST NOT add an entry for a file created inside an already-linked directory. `~/.claude/hooks` and `~/.agents/skills` are **directory** links, so their contents follow automatically.
+- MUST NOT add a `link:` entry under `~/.claude/skills/`. The `skills` CLI owns the per-skill links there, and the Claude desktop app owns `synced/`.
 - MUST verify after any `install.conf.yaml` change that no link dangles: `find ~ -maxdepth 2 -type l ! -exec test -e {} \; -print`. A `link:` whose target does not exist yet produces a broken symlink rather than an error.
 - MUST NOT edit anything under `dotbot/`; it is a pinned submodule.
 - MUST treat `agents/.skill-lock.json` as generated output of the `skills` CLI, and commit whatever that CLI writes rather than editing it.
@@ -49,7 +47,7 @@ Skills are **installed, never vendored.** Every skill comes from one of three up
 | [`axross/secret-skills`](https://github.com/axross/secret-skills)     | private    |
 | [`axross/parsable-skills`](https://github.com/axross/parsable-skills) | private    |
 
-The `skills` CLI installs each skill into `~/.agents/skills/<name>` and links it from `~/.claude/skills/<name>`. `~/.agents/skills` is itself a dotbot directory link to `agents/skills/`, so every install lands in this checkout. The `~/.claude/skills` glob over `claude/skills/*` stays in the map only for a local skill directory placed there; nothing populates it today. [`README.md`](./README.md) carries the command that restores the whole set from the lockfile after a clone.
+The `skills` CLI installs each skill into `~/.agents/skills/<name>` and links it from `~/.claude/skills/<name>`. `~/.agents/skills` is itself a dotbot directory link to `agents/skills/`, so every install lands in this checkout. [`README.md`](./README.md) carries the command that restores the whole set from the lockfile after a clone.
 
 Add or remove a skill with the CLI, then commit the lockfile it rewrote:
 
@@ -84,7 +82,7 @@ grep -o '\./skills/[^)]*' claude/CLAUDE.md | sed 's|^\.|'"$HOME"'/.claude|' | xa
 **Guidelines:**
 
 - MUST run `jq empty claude/settings.json` after editing it. A syntax error there surfaces only when the next session loads it.
-- MUST use links of the form `./skills/<name>/SKILL.md` from `claude/CLAUDE.md`. That form resolves from `~/.claude/CLAUDE.md`, where the agent reads it, but not inside this repository, since `claude/skills/` holds no skills. Check them with the last command above, not with `check-links.mjs`.
+- MUST use links of the form `./skills/<name>/SKILL.md` from `claude/CLAUDE.md`. That form resolves from `~/.claude/CLAUDE.md`, where the agent reads it, but not inside this repository, where the skills live under `agents/skills/`, not `claude/skills/`. Check them with the last command above, not with `check-links.mjs`.
 - MUST verify a shell or hook change by starting a new session or shell, since nothing rebuilds and a syntax error surfaces only at load.
 - MUST report which checks ran and which could not, because no CI will catch what a session skips (see below).
 
