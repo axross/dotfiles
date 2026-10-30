@@ -1,3 +1,2 @@
-claude/skills/*
 agents/skills/*
 !agents/skills/.gitkeep

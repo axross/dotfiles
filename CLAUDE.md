@@ -18,7 +18,7 @@ Every tracked path and what it owns:
 | `claude/settings.json`                                   | Claude Code harness settings: permission allowlist, hooks, model, effort level.                                    |
 | `agents/.skill-lock.json`                                | The record of which agent skills are installed and from which upstream. The `skills` CLI writes it through its link at `~/.agents/.skill-lock.json`. Generated — never hand-edited. |
 | `agents/skills/`                                         | The installed skill bodies, written by the `skills` CLI through the `~/.agents/skills` directory link. Gitignored except `.gitkeep`, which keeps the directory present on a fresh clone. |
-| `.gitignore`                                             | Ignores everything under `claude/skills/` and `agents/skills/` (except `agents/skills/.gitkeep`), so no skill content is ever committed. |
+| `.gitignore`                                             | Ignores everything under `agents/skills/` except `.gitkeep`, so no skill content is ever committed. |
 | `gitconfig`                                              | Shared git config. Includes `gitconfig-personal` always, and `gitconfig-parsable` only for `git@github.com:parsable/**` remotes. |
 | `gitignore_global`, `ssh/config`, `zshrc`, `zshenv`       | Shell and SSH configuration, each linked to its dotfile.                                                           |
 | `config/`                                                 | XDG-style config: `starship.toml` and `karabiner/karabiner.json`.                                                 |
