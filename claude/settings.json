@@ -34,7 +34,9 @@
       "Bash(gh pr list *)",
       "Bash(gh pr view *)",
       "Bash(gh pr status *)",
-      "Bash(gh pr diff *)"
+      "Bash(gh pr diff *)",
+      "mcp__parsable-dev-mcp__*",
+      "mcp__atlassian__*"
     ]
   },
   "model": "opus",
