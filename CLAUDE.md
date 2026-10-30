@@ -14,10 +14,11 @@ Every tracked path and what it owns:
 | [`install`](./install)                                   | dotbot entry point. Syncs the `dotbot` submodule, then applies the map.                                            |
 | `dotbot/`                                                | Vendored submodule, pinned at v1.23.1. Never edit; `./install` updates it.                                        |
 | [`claude/CLAUDE.md`](./claude/CLAUDE.md)                 | The **user-scope** agent agreement, installed to `~/.claude/CLAUDE.md`. It applies to every project, so it holds nothing specific to this repository — that is this file's job. |
+| `claude/skills/`                                         | Local skill directories, glob-linked one by one into `~/.claude/skills/` (excluding `synced/`). Its contents are gitignored; upstream skills never live here (see below). |
 | `claude/hooks/`                                           | Claude Code hooks, installed as a directory link. `session-start.sh` restores mise's PATH.                        |
 | `claude/settings.json`                                   | Claude Code harness settings: permission allowlist, hooks, model, effort level.                                    |
 | `agents/.skill-lock.json`                                | The record of which agent skills are installed and from which upstream. The `skills` CLI writes it through its link at `~/.agents/.skill-lock.json`. Generated — never hand-edited. |
-| `.gitignore`                                             | Ignores `claude/skills/`, so an installed skill copied there by mistake is never committed.                        |
+| `.gitignore`                                             | Ignores everything under `claude/skills/`, so no skill content is ever committed.                                  |
 | `gitconfig`                                              | Shared git config. Includes `gitconfig-personal` always, and `gitconfig-parsable` only for `git@github.com:parsable/**` remotes. |
 | `gitignore_global`, `ssh/config`, `zshrc`, `zshenv`       | Shell and SSH configuration, each linked to its dotfile.                                                           |
 | `config/`                                                 | XDG-style config: `starship.toml` and `karabiner/karabiner.json`.                                                 |
@@ -31,7 +32,8 @@ Every tracked path and what it owns:
 
 - MUST add a `link:` entry to [`install.conf.yaml`](./install.conf.yaml) for every new top-level file, then run `./install`. A tracked file with no entry is committed but never reaches `$HOME`, which looks like the change silently doing nothing.
 - MUST NOT add an entry for a file created inside an already-linked directory. `~/.claude/hooks` is a **directory** link, so its contents follow automatically.
-- MUST NOT add a `link:` entry under `~/.claude/skills/` or `~/.agents/skills/`. The `skills` CLI owns both directories (see below).
+- MUST keep `claude/skills/synced` in the `~/.claude/skills` glob's `exclude` list. `synced/` is managed by the Claude desktop app and must not be linked.
+- MUST NOT name a local directory in `claude/skills/` after a skill the `skills` CLI installs. `relink: true` lets dotbot replace the CLI's link at `~/.claude/skills/<name>`, and the CLI would replace dotbot's on its next run.
 - MUST verify after any `install.conf.yaml` change that no link dangles: `find ~ -maxdepth 2 -type l ! -exec test -e {} \; -print`. A `link:` whose target does not exist yet produces a broken symlink rather than an error.
 - MUST NOT edit anything under `dotbot/`; it is a pinned submodule.
 - MUST treat `agents/.skill-lock.json` as generated output of the `skills` CLI, and commit whatever that CLI writes rather than editing it.
