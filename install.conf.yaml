@@ -7,6 +7,9 @@
     - ~/.config/karabiner
     - ~/.ssh
     - ~/Repositories
+- create:
+    agents/skills:
+      mode: 0755
 - link:
     ~/.config/karabiner/karabiner.json: config/karabiner/karabiner.json
     ~/.config/starship.toml: config/starship.toml

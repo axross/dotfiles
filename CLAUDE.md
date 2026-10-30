@@ -17,8 +17,8 @@ Every tracked path and what it owns:
 | `claude/hooks/`                                           | Claude Code hooks, installed as a directory link. `session-start.sh` restores mise's PATH.                        |
 | `claude/settings.json`                                   | Claude Code harness settings: permission allowlist, hooks, model, effort level.                                    |
 | `agents/.skill-lock.json`                                | The record of which agent skills are installed and from which upstream. The `skills` CLI writes it through its link at `~/.agents/.skill-lock.json`. Generated — never hand-edited. |
-| `agents/skills/`                                         | The installed skill bodies, written by the `skills` CLI through the `~/.agents/skills` directory link. Gitignored except `.gitkeep`, which keeps the directory present on a fresh clone. |
-| `.gitignore`                                             | Ignores everything under `agents/skills/` except `.gitkeep`, so no skill content is ever committed. |
+| `agents/skills/`                                         | The installed skill bodies, written by the `skills` CLI through the `~/.agents/skills` directory link. Untracked: gitignored, and created by `./install` (a `create:` entry) so the link never dangles on a fresh clone. |
+| `.gitignore`                                             | Ignores `agents/skills/`, so no skill content is ever committed.                                                    |
 | `gitconfig`                                              | Shared git config. Includes `gitconfig-personal` always, and `gitconfig-parsable` only for `git@github.com:parsable/**` remotes. |
 | `gitignore_global`, `ssh/config`, `zshrc`, `zshenv`       | Shell and SSH configuration, each linked to its dotfile.                                                           |
 | `config/`                                                 | XDG-style config: `starship.toml` and `karabiner/karabiner.json`.                                                 |
@@ -26,7 +26,7 @@ Every tracked path and what it owns:
 
 ## The Symlink Contract
 
-`./install` is idempotent and safe to re-run. It only creates directories and links; the `shell:` block that once ran `brew bundle`, `mise trust`, and `mise install` is commented out, so those remain manual steps.
+`./install` is idempotent and safe to re-run. It only creates directories (including `agents/skills/` inside this repository) and links; the `shell:` block that once ran `brew bundle`, `mise trust`, and `mise install` is commented out, so those remain manual steps.
 
 **Guidelines:**
 
@@ -64,7 +64,7 @@ The lockfile records sources, not versions. `npx skills add` always installs the
 
 - MUST consult the `agent-skill-management` skill before adding, renaming, moving, or removing a skill, and to route a defect found in an installed skill.
 - MUST fix a skill defect in its upstream repository and reinstall. An installed copy under `agents/skills/` is gitignored, so an edit to it is never recorded and is lost on the next install.
-- MUST NOT commit skill content to this repository; keep `agents/skills/` ignored except its `.gitkeep`. This deliberately departs from `agent-skill-management`'s rule to commit installed skill roots: that rule serves a repository that authors skills, and this one only consumes them.
+- MUST NOT commit skill content to this repository; keep `agents/skills/` ignored. This deliberately departs from `agent-skill-management`'s rule to commit installed skill roots: that rule serves a repository that authors skills, and this one only consumes them.
 - MUST commit the lockfile after every `npx skills add` or `remove`, since it is the only record of the installed set.
 - MUST NOT put a rule specific to one project in a global skill; it belongs in that project's own agent file.
 
