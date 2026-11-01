@@ -8,7 +8,7 @@
       "skillPath": "skills/agent-skill-authoring/SKILL.md",
       "skillFolderHash": "ee37d3fd13905a066fe8079af3fd9b7260a79da5",
       "installedAt": "2026-07-29T19:17:37.949Z",
-      "updatedAt": "2026-10-30T07:47:40.113Z"
+      "updatedAt": "2026-11-01T00:11:05.103Z"
     },
     "conventional-commits": {
       "source": "axross/skills",
@@ -17,16 +17,16 @@
       "skillPath": "skills/conventional-commits/SKILL.md",
       "skillFolderHash": "3a6d56f291f09948dc5ffa277a9e22e2f2eba4e8",
       "installedAt": "2026-07-29T19:17:37.950Z",
-      "updatedAt": "2026-10-30T07:47:40.115Z"
+      "updatedAt": "2026-11-01T00:11:05.105Z"
     },
     "loop-engineering": {
       "source": "axross/skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/axross/skills.git",
       "skillPath": "skills/loop-engineering/SKILL.md",
-      "skillFolderHash": "f4704a28d96271b896184bf1923a03756a93d345",
+      "skillFolderHash": "ad598b2dc2ec4232f026bcc9dec95c3f407b5989",
       "installedAt": "2026-07-29T19:17:37.951Z",
-      "updatedAt": "2026-10-30T07:47:40.116Z"
+      "updatedAt": "2026-11-01T00:11:05.106Z"
     },
     "product-requirement-document-authoring": {
       "source": "axross/skills",
@@ -35,7 +35,7 @@
       "skillPath": "skills/product-requirement-document-authoring/SKILL.md",
       "skillFolderHash": "50358a5bb1cb64fab53801b9c15e44b1e98907d6",
       "installedAt": "2026-07-29T19:17:37.951Z",
-      "updatedAt": "2026-10-30T07:47:40.116Z"
+      "updatedAt": "2026-11-01T00:11:05.106Z"
     },
     "agent-skill-management": {
       "source": "axross/skills",
@@ -44,7 +44,7 @@
       "skillPath": "skills/agent-skill-management/SKILL.md",
       "skillFolderHash": "2b6967c35ce5e48ebaab29a115fd8a60a41e4bd9",
       "installedAt": "2026-07-30T15:55:23.480Z",
-      "updatedAt": "2026-10-30T07:47:40.115Z"
+      "updatedAt": "2026-11-01T00:11:05.105Z"
     },
     "professional-behavior": {
       "source": "axross/skills",
@@ -53,16 +53,16 @@
       "skillPath": "skills/professional-behavior/SKILL.md",
       "skillFolderHash": "9297ff12187e9466f84f5a7c505b5629845f4f02",
       "installedAt": "2026-07-30T15:55:23.481Z",
-      "updatedAt": "2026-10-30T07:47:40.116Z"
+      "updatedAt": "2026-11-01T00:11:05.107Z"
     },
     "software-development": {
       "source": "axross/skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/axross/skills.git",
       "skillPath": "skills/software-development/SKILL.md",
-      "skillFolderHash": "c7b508eb1649852c2a2eec6e9f216d1fc5d52c74",
+      "skillFolderHash": "b50201dabc1b52eb81c445550cfce24f37c1440f",
       "installedAt": "2026-07-30T15:55:23.482Z",
-      "updatedAt": "2026-10-30T07:47:40.116Z"
+      "updatedAt": "2026-11-01T00:11:05.107Z"
     },
     "technical-document-authoring": {
       "source": "axross/skills",
@@ -71,25 +71,25 @@
       "skillPath": "skills/technical-document-authoring/SKILL.md",
       "skillFolderHash": "76a5f76de784ae66a53da6f4cd5361335a0d31ff",
       "installedAt": "2026-07-30T15:55:23.483Z",
-      "updatedAt": "2026-10-30T07:47:40.117Z"
+      "updatedAt": "2026-11-01T00:11:05.107Z"
     },
     "parsable-github-operation": {
       "source": "axross/parsable-skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/axross/parsable-skills.git",
       "skillPath": "skills/parsable-github-operation/SKILL.md",
-      "skillFolderHash": "7271151a8acd71bb3272c74124e48766d093793e",
+      "skillFolderHash": "6417b2af8a558136824300819a19d7694553f6bb",
       "installedAt": "2026-10-29T01:48:04.644Z",
-      "updatedAt": "2026-10-30T07:47:26.324Z"
+      "updatedAt": "2026-11-01T00:11:13.360Z"
     },
     "parsable-jira-operation": {
       "source": "axross/parsable-skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/axross/parsable-skills.git",
       "skillPath": "skills/parsable-jira-operation/SKILL.md",
-      "skillFolderHash": "d7935eb1798387c8dae0adbcf4d12521d4e3e4ad",
+      "skillFolderHash": "007ee11b4eff6d0ec95dc7a1a645c299cd7da447",
       "installedAt": "2026-10-29T01:48:04.647Z",
-      "updatedAt": "2026-10-30T07:47:26.326Z"
+      "updatedAt": "2026-11-01T00:11:13.362Z"
     },
     "axross-voice-profile": {
       "source": "axross/secret-skills",
