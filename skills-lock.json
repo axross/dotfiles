@@ -1,0 +1,61 @@
+{
+  "version": 2,
+  "skills": {
+    "agent-skill-authoring": {
+      "source": "axross/skills",
+      "commit": "fe0dbebb7a21cfb31a6feacc62b9758cf7898fee",
+      "sourceType": "github",
+      "skillPath": "skills/agent-skill-authoring/SKILL.md",
+      "computedHash": "bd252dbe4062bc02084b0b01b165802b3adb86c98d5ac8acda4b143228150e3a"
+    },
+    "agent-skill-management": {
+      "source": "axross/skills",
+      "commit": "fe0dbebb7a21cfb31a6feacc62b9758cf7898fee",
+      "sourceType": "github",
+      "skillPath": "skills/agent-skill-management/SKILL.md",
+      "computedHash": "78174feb68b038deb4649fb4722bb6dbfb905a8c527748f1ede710787b56fa2f"
+    },
+    "conventional-commits": {
+      "source": "axross/skills",
+      "commit": "fe0dbebb7a21cfb31a6feacc62b9758cf7898fee",
+      "sourceType": "github",
+      "skillPath": "skills/conventional-commits/SKILL.md",
+      "computedHash": "b762cf6bdf4171742e212174f3a9df11a386765683b95ec440fc2ed53e8784b6"
+    },
+    "loop-engineering": {
+      "source": "axross/skills",
+      "commit": "fe0dbebb7a21cfb31a6feacc62b9758cf7898fee",
+      "sourceType": "github",
+      "skillPath": "skills/loop-engineering/SKILL.md",
+      "computedHash": "de4ca1669f6d51b7bfd375b00a0683271652b20795e01daab6a414b8d5d06e36"
+    },
+    "product-requirement-document-authoring": {
+      "source": "axross/skills",
+      "commit": "fe0dbebb7a21cfb31a6feacc62b9758cf7898fee",
+      "sourceType": "github",
+      "skillPath": "skills/product-requirement-document-authoring/SKILL.md",
+      "computedHash": "98cd7b191717d7cd0c85715ba55d1c1e84ee034dc61eb15037ce90217d289155"
+    },
+    "professional-behavior": {
+      "source": "axross/skills",
+      "commit": "fe0dbebb7a21cfb31a6feacc62b9758cf7898fee",
+      "sourceType": "github",
+      "skillPath": "skills/professional-behavior/SKILL.md",
+      "computedHash": "4fa19c3ab8eb2e925b263615aab956987045ed9764aeddc64d375024ed9d88ed"
+    },
+    "software-development": {
+      "source": "axross/skills",
+      "commit": "fe0dbebb7a21cfb31a6feacc62b9758cf7898fee",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/SKILL.md",
+      "computedHash": "ce35dac8c2b0b31cfbae8589dd3176bef335f2966d11340d6091a532ddb6b3e6"
+    },
+    "technical-document-authoring": {
+      "source": "axross/skills",
+      "commit": "fe0dbebb7a21cfb31a6feacc62b9758cf7898fee",
+      "sourceType": "github",
+      "skillPath": "skills/technical-document-authoring/SKILL.md",
+      "computedHash": "7a085fa66ecb88b4587f4c4519759444a4b321aeb5b12c00970802321c6f2bac"
+    }
+  }
+}
